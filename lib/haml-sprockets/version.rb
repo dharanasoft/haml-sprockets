@@ -1,5 +1,5 @@
 module Haml
   module Sprockets
-    VERSION = "0.0.1"
+    VERSION = "0.0.2"
   end
 end
