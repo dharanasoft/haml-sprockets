@@ -1,5 +1,6 @@
 require "haml-sprockets/version"
 require 'tilt'
+require 'sprockets'
 module Haml
   module Sprockets
     class Template < ::Tilt::Template
@@ -18,4 +19,6 @@ module Haml
     end
   end
 end
-require "haml-sprockets/engine" if defined?(Rails)
+Sprockets::Engines
+Sprockets.register_engine '.hamljs', Haml::Sprockets::Template
+require 'haml-sprockets/engine' if defined?(Rails)
