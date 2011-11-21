@@ -13,7 +13,7 @@ module Haml
       end
       def evaluate(scope,locals,&block)
         haml_code = data.dup
-        haml_code = haml_code.gsub(/\\/,"\\\\").gsub(/\'/,"\\'").gsub(/\n/,"\\n")
+        haml_code = haml_code.gsub(/\\/,"\\\\").gsub(/\'/,"\\\\'").gsub(/\n/,"\\n")
         "Haml('#{haml_code}', {escapeHtmlByDefault:true})"
       end
     end
