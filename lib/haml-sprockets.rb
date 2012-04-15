@@ -22,7 +22,7 @@ module Haml
 
         haml_lib = File.read("#{::Rails.root}/vendor/assets/javascripts/haml.js")
         context = ExecJS.compile(haml_lib)
-        return context.eval("Haml.compile('#{haml_code}', {escapeHtmlByDefault: true})")
+        return context.eval("Haml.optimize(Haml.compile('#{haml_code}', {escapeHtmlByDefault: true}))")
       end
     end
   end
