@@ -12,10 +12,6 @@ In the `Gemfile`, add the following line.
 
     gem "haml-sprockets"
 
-In `app/assets/javascripts/application.js` add the following line before `//= require_tree .`
-
-    //=require haml
-
 Now, you can create hamljs files under `app/assets/javascripts/templates` folder. You can create the templates folder, if it does not already exist.
 
     // code for app/assets/javascripts/templates/hello.jst.hamljs
