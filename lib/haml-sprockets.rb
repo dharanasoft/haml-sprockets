@@ -6,6 +6,8 @@ require 'execjs'
 module Haml
   module Sprockets
     class Template < ::Tilt::Template
+      self.default_mime_type = 'application/javascript'
+
       def self.engine_initialized?
         true
       end
@@ -23,7 +25,10 @@ module Haml
         haml_path = File.expand_path("../../vendor/assets/javascripts/haml.js", __FILE__)
         haml_lib = File.read(haml_path)
         context = ExecJS.compile(haml_lib)
-        return context.eval("Haml.optimize(Haml.compile('#{haml_code}', {escapeHtmlByDefault: true}))")
+
+        # Haml("...") returns a function. We convert it to a string
+        # so that the browser can convert it back into a function.
+        context.eval "Haml('#{haml_code}').toString()"
       end
     end
   end
